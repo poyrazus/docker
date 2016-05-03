@@ -11,14 +11,15 @@ How to build the image
 * Exchange __your-repo-name__, __your-image-name__, and __your-version-name__ with the choise of yours. 
 
 ```
-docker build --tag="<your-repo-name>/<your-image-name>:<your-version-name>" .
+docker build --tag="your-repo-name/your-image-name:your-version-name" .
 ```
 Example: docker build --tag="myrepo/alpine-java8:latest" .
 
 How to test
 -----------------
-* Run the following two commands in the console (First command only creates a Hello World file)
+* Run the following two commands in the console (First command only creates a Hello World file) using the image-name you provided when building the image
+* image_name: your-repo-name/your-image-name:your-version-name
 ```
 echo 'public class Hello { public static void main(String[] args) { System.out.println("Hello World!"); } }' > Hello.java
-docker run --rm -v "$(pwd)":/mnt --workdir /mnt <your-repo-name>/<your-image-name>:<your-version-name> sh -c "javac Hello.java && java Hello"
+docker run --rm -v "$(pwd)":/mnt --workdir /mnt your-repo-name/your-image-name:your-version-name sh -c "javac Hello.java && java Hello"
 ```
